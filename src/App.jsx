@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
-} from "recoil";
-import { CharacterCounter } from "./CharacterCounter";
+import { RecoilRoot } from "recoil";
 import TodoInput from "./todo/TodoInput";
 import TodoList from "./todo/TodoList";
 
