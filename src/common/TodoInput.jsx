@@ -7,26 +7,28 @@ const TodoInput = () => {
   const [text, setText] = useRecoilState(inputState);
   const [todos, setTodos] = useRecoilState(todosState);
 
-  const handleChange = (e) => {
-    setText(e.target.value);
-    console.log(text);
-  };
-
-  const handleClick = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     if (!text) {
       return;
     }
-    setTodos([...todos, text]);
+    setTodos([...todos, { text: text, completed: false}]);
     setText("");
+  };
+
+  const handleChange = (e) => {
+    setText(e.target.value);
   };
 
   const handleAllRemove = () => {
     setTodos([]);
   };
 
+  let todosCount = todos.filter((todo) => todo.text).length;
+
   return (
     <section className={styles.container}>
-      <div className={styles.InputArea}>
+      <form onSubmit={handleSubmit} className={styles.InputArea}>
         <input
           type="text"
           value={text}
@@ -34,7 +36,7 @@ const TodoInput = () => {
           className={styles.InputArea__input}
         />
         <button
-          onClick={handleClick}
+          type="submit"
           className={
             !text
               ? `${styles.button} ${styles.deactivationButton}`
@@ -43,10 +45,14 @@ const TodoInput = () => {
         >
           추가
         </button>
-      </div>
+      </form>
       <button
         onClick={handleAllRemove}
-        className={`${styles.button} ${styles.allRemoveButton}`}
+        className={
+          !todosCount
+            ? `${styles.button} ${styles.allRemoveButton} ${styles.deactivationButton}`
+            : `${styles.button} ${styles.allRemoveButton}`
+        }
       >
         전체 삭제
       </button>

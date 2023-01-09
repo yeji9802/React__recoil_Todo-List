@@ -16,27 +16,36 @@ const TodoItem = (props) => {
   };
 
   const handleClick = () => {
-    const copied = [...todos];
-    copied.splice(idx, 1, editText);
-    setTodos(copied);
+    const copiedTodos = [...todos];
+    copiedTodos.splice(idx, 1, {...todo, text: editText});
+    setTodos(copiedTodos);
     setEdit(false);
   };
 
   const handleEdit = () => {
     setEdit(true);
-    setEditText(todo);
+    setEditText(todo.text);
   };
 
   const handleRemove = () => {
-    console.log(idx);
-    const copied = [...todos];
-    copied.splice(idx, 1);
-    setTodos(copied);
+    const copiedTodos = [...todos];
+    copiedTodos.splice(idx, 1);
+    setTodos(copiedTodos);
+  };
+
+  const handlecompleted = (e) => {
+    const copiedTodos = [...todos];
+    copiedTodos.splice(idx, 1, { ...todo, completed: e.target.checked });
+    setTodos(copiedTodos);
   };
 
   return (
     <li className={styles.listItem}>
-      <input type="checkbox" />
+      <input
+        type="checkbox"
+        checked={todo.completed}
+        onChange={handlecompleted}
+      />
       {edit ? (
         <input
           onChange={handleChange}
@@ -45,7 +54,15 @@ const TodoItem = (props) => {
           className={`${styles.textArea} ${styles.editInput}`}
         />
       ) : (
-        <span className={styles.textArea}>{todo}</span>
+        <span
+          className={`${
+            !todo.completed
+              ? styles.textArea
+              : `${styles.textArea} ${styles.textCompletion}`
+          }`}
+        >
+          {todo.text}
+        </span>
       )}
       <div className={styles.buttonArea}>
         {edit ? (

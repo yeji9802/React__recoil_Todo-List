@@ -1,0 +1,9 @@
+.container {
+  width: 50rem;
+  margin: 2rem auto;
+}
+
+.todoCount {
+  color: #3577e5;
+  background-color: initial;
+}
