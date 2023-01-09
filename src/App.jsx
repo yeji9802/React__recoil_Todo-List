@@ -1,7 +1,7 @@
 import React from "react";
 import { RecoilRoot } from "recoil";
-import TodoInput from "./todo/TodoInput";
-import TodoList from "./todo/TodoList";
+import TodoInput from "./common/TodoInput";
+import TodoList from "./common/TodoList";
 
 function App() {
   return (

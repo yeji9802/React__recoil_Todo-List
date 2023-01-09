@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { todosState } from "./todoStore";
+import styles from "./TodoItem.module.css";
 
 const TodoItem = (props) => {
   const [todos, setTodos] = useRecoilState(todosState);
@@ -12,41 +13,54 @@ const TodoItem = (props) => {
 
   const handleChange = (e) => {
     setEditText(e.target.value);
-  }
-  
+  };
+
   const handleClick = () => {
     const copied = [...todos];
     copied.splice(idx, 1, editText);
     setTodos(copied);
-    setEdit(false)
-  }
-  
+    setEdit(false);
+  };
+
   const handleEdit = () => {
     setEdit(true);
     setEditText(todo);
   };
-  
+
   const handleRemove = () => {
-    console.log(idx)
+    console.log(idx);
     const copied = [...todos];
-    copied.splice(idx, 1)
+    copied.splice(idx, 1);
     setTodos(copied);
-  }
+  };
 
   return (
-    <li>
+    <li className={styles.listItem}>
       <input type="checkbox" />
       {edit ? (
-        <input onChange={handleChange} type="text" value={editText} />
+        <input
+          onChange={handleChange}
+          type="text"
+          value={editText}
+          className={`${styles.textArea} ${styles.editInput}`}
+        />
       ) : (
-        <span>{todo}</span>
+        <span className={styles.textArea}>{todo}</span>
       )}
-      {edit ? (
-        <button onClick={handleClick}>확인</button>
-      ) : (
-        <button onClick={handleEdit}>수정</button>
-      )}
-      <button onClick={handleRemove}>삭제</button>
+      <div className={styles.buttonArea}>
+        {edit ? (
+          <button onClick={handleClick} className={styles.button}>
+            확인
+          </button>
+        ) : (
+          <button onClick={handleEdit} className={styles.button}>
+            수정
+          </button>
+        )}
+        <button onClick={handleRemove} className={styles.button}>
+          삭제
+        </button>
+      </div>
     </li>
   );
 };

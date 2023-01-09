@@ -1,0 +1,41 @@
+.container {
+  width: 50rem;
+  margin: 2rem auto;
+}
+
+.InputArea {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.InputArea__input {
+  width: 90%;
+  padding: 0.5rem;
+  border: 1px solid #c0c0c0;
+  border-radius: 0.3rem;
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid #3577e5;
+}
+
+.button {
+  display: flex;
+  padding: 0.5rem;
+  border: 0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #3577e5;
+}
+
+.deactivationButton {
+  cursor: no-drop;
+  background-color: #c0c0c0;
+}
+
+.allRemoveButton {
+  margin-top: 0.5rem;
+}

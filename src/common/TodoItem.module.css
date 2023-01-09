@@ -1,0 +1,44 @@
+.listItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #cde0ff;
+}
+
+.listItem:last-child {
+  border: 0;
+}
+
+.textArea {
+  font-size: 0.8rem;
+  color: #6f6f6f;
+  width: 85%;
+}
+
+.editInput {
+  border: 1px solid #c0c0c0;
+  border-radius: 0.3rem;
+  padding: 0.3rem;
+
+}
+
+.editInput:focus {
+  border: 1px solid #85acf1;
+}
+
+.buttonArea {
+  display: flex;
+}
+
+.button {
+  display: flex;
+  padding: 0.3rem;
+  margin-left: 0.5rem;
+  font-size: 0.5rem;
+  border: 0;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #6aa1ff;
+}
